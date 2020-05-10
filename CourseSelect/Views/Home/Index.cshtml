@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Home page";
+}
+
+<h2>Дисципліни Вільного Вибору Студентів</h2>
+
+
+<div>
+    <table class="table table-bordered table-responsive table-hover" id="tblSubjects">
+        <tr>
+            <th>Назва курсу</th>
+            <th> Викладач </th>
+            <th>Опис</th>
+            <th>Кількість студентів</th>
+        </tr>
+
+    </table>
+</div>
+<script src="~/scripts/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+
+   
+    $(document).ready(function () {
+        GetSubjectsData();
+    });
+    function GetSubjectsData() {
+        $.get('/Home/SubjectsData', {}, function (data) {
+            var tblSubjects = $("#tblSubjects");
+            $.each(data, function (index, item) {
+                var tr = $("<tr></tr>");
+                tr.html(("<td>" + item.nameOfcourse + "</td>")
+                + " " + ("<td>" + item.teacherName + "</td>")
+                + " " + ("<td>" + item.desc_href + "</td>")
+                + " " + ("<td>" + item.studentsAmount + "</td>"));
+                tblSubjects.append(tr);
+            });
+        });
+    }
+</script>

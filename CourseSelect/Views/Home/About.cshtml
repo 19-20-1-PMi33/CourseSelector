@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+@*<h3>@ViewBag.Message</h3>
+    <p>Use this area to provide additional information.</p>*@
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"></asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col">
+                        <right>
+                            <img width="100px" src="https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg" />
+                        </right>
+                    </div>
+                    <div class="col">
+                        <hr>
+                    </div>
+                    @*<form runat="server">
+                        <div class="col-md-4">
+                            <label>User ID</label>
+                            <asp:TextBox ID=”TextBox1″ runat=”server”></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label>User Name</label>
+                            <asp:TextBox ID=”TextBox2″ runat=”server”></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <asp:Calendar ID="Calendar1" runat="server" OnSelectionChanged="DateChange"></asp:Calendar>
+                            <asp:TextBox ID="TextCal" runat="server"></asp:TextBox>
+                        </div>
+                    </form>*@
+                    <div class="col-md-4">
+                        <form action="/action_page.php">
+                            <label for="fname">First name:</label>
+                            <input type="text" id="fname" name="fname"><br>
+                            <label for="lname">Last name:</label>
+                            <input type="text" id="lname" name="lname"><br>
+                            <label for="user_id">User ID:</label>
+                            <input type="text" id="user_id" name="user_id"><br><br>
+                            <label for="semester">Semester:</label>
+                            <input type="date" id="semester" name="semester"><br><br>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+                 
+                <br>
+            </div>
+        </div>
+    </div>
+</asp:Content>
