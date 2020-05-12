@@ -1,53 +1,37 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Newtonsoft.Json;
-using System.Web;
-using System.Web.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using CourseSelect.Models;
 
 namespace CourseSelect.Controllers
 {
     public class HomeController : Controller
     {
-        private List<Subjects> emp;
-        public HomeController()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
-
-            emp = new List<Subjects>()
-            {
-
-                new Subjects()
-                {nameOfcourse="Криптологія",teacherName="Малець", studentsAmount=300, desc_href="https://ami.lnu.edu.ua/" },
-                new Subjects()
-                { nameOfcourse="Орфографія",teacherName="Королль", studentsAmount=500, desc_href="https://ami.lnu.edu.ua/" },
-                new Subjects()
-                { nameOfcourse="Батьківство",teacherName="Kальченко", studentsAmount=100, desc_href="https://ami.lnu.edu.ua/"}
-            };
+            _logger = logger;
         }
-            public ActionResult Index()
+
+        public IActionResult Index()
         {
             return View();
         }
 
-        public JsonResult SubjectsData()
+        public IActionResult Privacy()
         {
-            return Json(emp, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
