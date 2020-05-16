@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace Model
 {
-    public partial class AspNetUserRoles
+    public partial class AspNetUserRoles: IdentityUserRole<string>
     {
-        public string UserId { get; set; }
-        public string RoleId { get; set; }
-
         public virtual AspNetRoles Role { get; set; }
         public virtual AspNetUsers User { get; set; }
     }

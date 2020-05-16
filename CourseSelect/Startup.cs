@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure;
+using Model;
 
 namespace CourseSelect
 {
@@ -30,7 +31,8 @@ namespace CourseSelect
             services.AddDbContext<CoursesContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => {
+
+            services.AddDefaultIdentity<AspNetUsers>(options => {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.SignIn.RequireConfirmedEmail = false;
@@ -42,7 +44,9 @@ namespace CourseSelect
                 options.Password.RequireUppercase = false;
                 })
                 .AddEntityFrameworkStores<CoursesContext>();
+
             services.AddControllersWithViews();
+
             services.AddRazorPages();
         }
 

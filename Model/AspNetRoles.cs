@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace Model
 {
-    public partial class AspNetRoles
+    public partial class AspNetRoles: IdentityRole
     {
         public AspNetRoles()
         {

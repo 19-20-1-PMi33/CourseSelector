@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace Model
 {
-    public partial class AspNetUserLogins
+    public partial class AspNetUserLogins: IdentityUserLogin<string>
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string ProviderDisplayName { get; set; }
-        public string UserId { get; set; }
+        public string Id { get; set; }
 
         public virtual AspNetUsers User { get; set; }
     }
