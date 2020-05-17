@@ -37,15 +37,7 @@
                     Number of used seats: @Html.DisplayFor(modelItem => item.NumberSetsUsed)
                 </span>
                 <span class="learn-more">
-                    @{ 
-                        var d = new Dictionary<string, string>();
-                        d.Add("description", item.Description);
-                        d.Add("endDate", item.EndDate.ToString());
-                        d.Add("startDate", item.StartDate.ToString());
-                        d.Add("numberOfSeats", item.NumberOfSeats.ToString());
-                        d.Add("numberOfSeatsUsed", item.NumberSetsUsed.ToString());
-                    }
-                    <a class="pretty-text" asp-controller="Course" asp-action="Course" asp-route-model="@d">
+                    <a class="pretty-text" asp-controller="Course" asp-action="Course" asp-route-model="@item">
                         <strong class="href">Learn more</strong>
                     </a>
                 </span>
