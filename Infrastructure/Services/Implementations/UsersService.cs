@@ -44,6 +44,13 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public AspNetUsers GetUserById(string id)
+        {
+            var user = _context.AspNetUsers.FirstOrDefault(x => x.Id == id);
+
+            return user;
+        }
+
         public async Task<bool> Save()
         {
             try
