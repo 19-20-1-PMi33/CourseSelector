@@ -4,5 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@Model.Description.Split(':')[0]</h1>
+@{ 
+    var splits = @Model.Description.Split(':');
+    var name = splits[0];
+    var description = splits[1];
+}
 
+<h1>@name</h1>
+
+<div class="card">
+    <div class="pretty-card">
+        <div class="pretty-column"></div>
+        <div class="pretty-card-text">
+            <div>
+                Teacher: @Model.Teacher.UserName @Model.Teacher.Surname
+            </div>
+            <span class="pretty-text start-date">
+                <strong>Start date</strong>: @Model.StartDate.GetDateTimeFormats()[0]
+            </span>
+            <span class="pretty-text end-date">
+                <strong>End date</strong>: @Model.EndDate.GetValueOrDefault().GetDateTimeFormats()[0]
+            </span>
+            <br />
+            <br />
+            <div class="pretty-text number-of-seats">
+                Number of seats: @Model.NumberOfSeats
+            </div>
+            <span class="pretty-text number-of-used-seats">
+                Number of used seats: @Model.NumberSetsUsed
+            </span>
+            <hr />
+            <div class="pretty-text description-text">
+                @description
+            </div>
+        </div>
+    </div>
+</div>
