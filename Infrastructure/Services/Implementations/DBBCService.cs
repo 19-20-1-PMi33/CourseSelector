@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services.Implementations
 {
@@ -36,11 +37,11 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
             try
             {
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)

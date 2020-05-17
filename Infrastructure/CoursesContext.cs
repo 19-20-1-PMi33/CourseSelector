@@ -74,7 +74,7 @@ namespace Infrastructure
             {
                 entity.ToTable("DBBC");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Description).IsUnicode(false);
 
@@ -97,7 +97,7 @@ namespace Infrastructure
             {
                 entity.ToTable("DBBCTOUSER");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Dbbcid).HasColumnName("DBBCId");
 

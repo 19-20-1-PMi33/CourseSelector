@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Services.Interfaces
 {
@@ -9,6 +10,6 @@ namespace Infrastructure.Services.Interfaces
     {
         public IEnumerable<Dbbc> GetDBBC();
         public bool AddDBBC(Dbbc dbbc);
-        public bool Save();
+        public Task<bool> Save();
     }
 }
