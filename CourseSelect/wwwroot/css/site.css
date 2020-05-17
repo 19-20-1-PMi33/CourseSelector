@@ -69,3 +69,64 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.pretty-text {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+}
+
+.description {
+    display: block;
+    margin-top: -85px;
+    margin-left: 20px;
+}
+
+.description-image {
+    width: 200px;
+    margin-left: calc(100% - 200px);
+    border: white;
+    border-radius: 10px;
+    display: block;
+    margin-top: -125px
+}
+
+.course-beautiful-column {
+    background: linear-gradient(to right, #09cc4a 21%, #4fde4f 82%);
+    height: 125px;
+    width: 15px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.card {
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 2px 1px -1px rgba(0,0,0,0.12);
+    border: white;
+    border-radius: 7px;
+    background: white;
+    padding: 7px;
+}
+
+.description-card {
+    min-height: 137px;
+}
+
+.start-date{
+    margin-right: 10px;
+}
+
+.end-date{
+
+}
+
+.number-of-seats{
+
+}
+
+.number-of-used-seats{
+
+}
+
+.description-text{
+    font-size: 25px;
+    margin-bottom: 5px
+}
