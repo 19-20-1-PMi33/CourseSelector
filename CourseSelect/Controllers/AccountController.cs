@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 //using CourseSelect.Areas.Identity.Pages.Account;
 using CourseSelect.Models;
+using Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Model;
@@ -14,11 +15,16 @@ namespace CourseSelect.Controllers
     {
         private readonly UserManager<AspNetUsers> _userManager;
         private readonly SignInManager<AspNetUsers> _signInManager;
+        private readonly IUsersService _usersService;
 
-        public AccountController(UserManager<AspNetUsers> userManager, SignInManager<AspNetUsers> signInManager)
+        public AccountController(
+            UserManager<AspNetUsers> userManager,
+            SignInManager<AspNetUsers> signInManager,
+            IUsersService usersService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _usersService = usersService;
         }
         [HttpGet]
         public IActionResult Register()
@@ -32,15 +38,15 @@ namespace CourseSelect.Controllers
             if (ModelState.IsValid)
             {
                 AspNetUsers user = new AspNetUsers
-                { 
-                    UserName = model.Name, 
+                {
+                    UserName = model.Name,
                     Surname = model.Surname,
                     Credit = model.Credit,
                     Email = model.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
-                
+
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
@@ -60,16 +66,27 @@ namespace CourseSelect.Controllers
         {
             if (ModelState.IsValid)
             {
-                AspNetUsers user = new AspNetUsers
+                var users = _usersService.GetUserByCredit(model.Credit);
+
+                if (users.Count() == 1)
                 {
-                    Credit = model.Credit,
-                    UserName = "Test user"
-                };
+                    var user = users.ToList()[0];
+                    PasswordVerificationResult result = new PasswordHasher<AspNetUsers>().VerifyHashedPassword(user, user.PasswordHash, model.Password);
+                    if (result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded)
+                    {
+                        await _signInManager.SignInAsync(users.ToList()[0], false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Wrong password");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid Credit");
+                }
 
-                await _signInManager.SignInAsync(user, false);
-
-                return RedirectToAction("Index", "Home");
-                
             }
             return View(model);
         }
