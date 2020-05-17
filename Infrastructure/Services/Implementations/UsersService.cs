@@ -29,5 +29,31 @@ namespace Infrastructure.Services.Implementations
 
             return user;
         }
+
+        public bool AddUser(AspNetUsers user)
+        {
+            try
+            {
+                _context.AspNetUsers.Add(user);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

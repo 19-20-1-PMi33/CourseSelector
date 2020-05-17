@@ -9,5 +9,7 @@ namespace Infrastructure.Services.Interfaces
     {
         public IEnumerable<AspNetUsers> GetUsers();
         public IEnumerable<AspNetUsers> GetUserByCredit(string credit);
+        public bool AddUser(AspNetUsers user);
+        public bool Save();
     }
 }
