@@ -8,5 +8,7 @@ namespace Infrastructure.Services.Interfaces
     public interface IDBBCService
     {
         public IEnumerable<Dbbc> GetDBBC();
+        public bool AddDBBC(Dbbc dbbc);
+        public bool Save();
     }
 }

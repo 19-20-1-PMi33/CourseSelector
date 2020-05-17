@@ -22,5 +22,31 @@ namespace Infrastructure.Services.Implementations
 
             return dbbcs;
         }
+
+        public bool AddDBBC(Dbbc dbbc)
+        {
+            try
+            {
+                _context.Dbbc.Add(dbbc);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
