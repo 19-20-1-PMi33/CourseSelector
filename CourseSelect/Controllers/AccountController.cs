@@ -89,6 +89,7 @@ namespace CourseSelect.Controllers
                 }
 
             }
+
             return Redirect("~/Identity/Account/Login");
         }
     }

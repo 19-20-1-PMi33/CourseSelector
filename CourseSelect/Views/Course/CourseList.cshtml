@@ -13,6 +13,7 @@
     string[] splited = item.Description.Split(':');
     string name = splited[0];
     string description = splited[1];
+
     <div class="card description-card">
         <div class="course-beautiful-column"></div>
         <img alt="LearnImg"
@@ -31,8 +32,15 @@
             <div class="pretty-text number-of-seats">
                 Number of seats: @Html.DisplayFor(modelItem => item.NumberOfSeats)
             </div>
-            <div class="pretty-text number-of-used-seats">
-                Number of used seats: @Html.DisplayFor(modelItem => item.NumberSetsUsed)
+            <div class="seats-and-learn-more-div">
+                <span class="pretty-text number-of-used-seats">
+                    Number of used seats: @Html.DisplayFor(modelItem => item.NumberSetsUsed)
+                </span>
+                <span class="learn-more">
+                    <a class="pretty-text" asp-controller="Course" asp-action="Course" asp-route-model="@item">
+                        <strong class="href">Learn more</strong>
+                    </a>
+                </span>
             </div>
             <hr />
             <div class="pretty-text description-text">

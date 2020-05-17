@@ -130,3 +130,16 @@ body {
     font-size: 25px;
     margin-bottom: 5px
 }
+
+.href {
+    color: #05a059;
+}
+
+.seats-and-learn-more-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.learn-more{
+    margin-right: 15px;
+}
