@@ -29,5 +29,31 @@ namespace Infrastructure.Services.Implementations
 
             return allDbbc;
         }
+
+        public bool AddDBBCToUser(Dbbctouser dbbcToUser)
+        {
+            try
+            {
+                _context.Dbbctouser.Add(dbbcToUser);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public bool Save()
+        {
+            try
+            {
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
