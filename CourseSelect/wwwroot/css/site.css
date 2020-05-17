@@ -140,6 +140,22 @@ body {
     justify-content: space-between;
 }
 
-.learn-more{
+.pretty-card{
+    display: flex;
+    height: 100%;
+}
+
+.pretty-column {
+    margin-bottom: -7px;
+    margin-top: -7px;
+    width: 30px;
+    background: linear-gradient(to right, #09cc4a 21%, #4fde4f 82%);
+}
+
+.learn-more {
     margin-right: 15px;
+}
+
+.pretty-card-text{
+    margin-left: 10px;
 }
