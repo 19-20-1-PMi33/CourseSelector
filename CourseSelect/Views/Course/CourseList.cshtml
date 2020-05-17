@@ -37,7 +37,7 @@
                     Number of used seats: @Html.DisplayFor(modelItem => item.NumberSetsUsed)
                 </span>
                 <span class="learn-more pretty-text">
-                    @Html.ActionLink("Learn more", "Course", "Course", item)
+                    @Html.ActionLink("Learn more", "Course", "Course", item, new { @class = "href"})
                 </span>
             </div>
             <hr />
