@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 //using CourseSelect.Areas.Identity.Pages.Account;
 using CourseSelect.Models;
-using Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Model;
@@ -15,16 +14,11 @@ namespace CourseSelect.Controllers
     {
         private readonly UserManager<AspNetUsers> _userManager;
         private readonly SignInManager<AspNetUsers> _signInManager;
-        private readonly IUsersService _usersService;
 
-        public AccountController(
-            UserManager<AspNetUsers> userManager, 
-            SignInManager<AspNetUsers> signInManager,
-            IUsersService usersService)
+        public AccountController(UserManager<AspNetUsers> userManager, SignInManager<AspNetUsers> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _usersService = usersService;
         }
         [HttpGet]
         public IActionResult Register()
@@ -66,27 +60,16 @@ namespace CourseSelect.Controllers
         {
             if (ModelState.IsValid)
             {
-                var users = _usersService.GetUserByCredit(model.Credit);
-
-                if (users.Count() == 1)
+                AspNetUsers user = new AspNetUsers
                 {
-                    var user = users.ToList()[0];
-                    PasswordVerificationResult result = new PasswordHasher<AspNetUsers>().VerifyHashedPassword(user, user.PasswordHash, model.Password);
-                    if (result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded)
-                    {
-                        await _signInManager.SignInAsync(users.ToList()[0], false);
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError(string.Empty, "Wrong password");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid Credit");
-                }
+                    Credit = model.Credit,
+                    UserName = "Test user"
+                };
 
+                await _signInManager.SignInAsync(user, false);
+
+                return RedirectToAction("Index", "Home");
+                
             }
             return View(model);
         }
