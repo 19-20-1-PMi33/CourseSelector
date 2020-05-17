@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Infrastructure;
 using Model;
+using Infrastructure.Services.Interfaces;
+using Infrastructure.Services.Implementations;
 
 namespace CourseSelect
 {
@@ -28,6 +30,10 @@ namespace CourseSelect
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDBBCService, DBBCService>();
+            services.AddTransient<IUsersService, UsersService>();
+            services.AddTransient<IDBBCToUserService, DBBCToUserService>();
+
             services.AddDbContext<CoursesContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -42,7 +48,7 @@ namespace CourseSelect
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-                })
+            })
                 .AddEntityFrameworkStores<CoursesContext>();
 
             services.AddControllersWithViews();
