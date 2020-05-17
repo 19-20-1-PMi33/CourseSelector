@@ -16,26 +16,41 @@
     <div class="pretty-card">
         <div class="pretty-column"></div>
         <div class="pretty-card-text">
-            <div>
-                Teacher: @Model.Teacher.UserName @Model.Teacher.Surname
-            </div>
-            <span class="pretty-text start-date">
-                <strong>Start date</strong>: @Model.StartDate.GetDateTimeFormats()[0]
-            </span>
-            <span class="pretty-text end-date">
-                <strong>End date</strong>: @Model.EndDate.GetValueOrDefault().GetDateTimeFormats()[0]
-            </span>
-            <br />
-            <br />
-            <div class="pretty-text number-of-seats">
-                Number of seats: @Model.NumberOfSeats
-            </div>
-            <span class="pretty-text number-of-used-seats">
-                Number of used seats: @Model.NumberSetsUsed
-            </span>
-            <hr />
-            <div class="pretty-text description-text">
-                @description
+            <img 
+                 alt="ToSalute"
+                 src="~/images/ToSalute.jpg"
+                 class="course-image"
+            />
+            <div class="course-description">
+                <div class="pretty-text teacher">
+                    @Model.Teacher.UserName @Model.Teacher.Surname
+                </div>
+                <span class="pretty-text start-date">
+                    <strong>Start date</strong>: @Model.StartDate.GetDateTimeFormats()[0]
+                </span>
+                <span class="pretty-text end-date">
+                    <strong>End date</strong>: @Model.EndDate.GetValueOrDefault().GetDateTimeFormats()[0]
+                </span>
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="pretty-text number-of-seats">
+                    Number of seats: @Model.NumberOfSeats
+                </div>
+                <span class="pretty-text number-of-used-seats">
+                    Number of used seats: @Model.NumberSetsUsed
+                </span>
+                <hr />
+                <div class="pretty-text description-text">
+                    @description
+                </div>
+                <br />
+                <div class="button-align-right">
+                    <button class="btn btn-success">
+                        Subscribe
+                    </button>
+                </div>
             </div>
         </div>
     </div>
