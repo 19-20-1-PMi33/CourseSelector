@@ -36,10 +36,8 @@
                 <span class="pretty-text number-of-used-seats">
                     Number of used seats: @Html.DisplayFor(modelItem => item.NumberSetsUsed)
                 </span>
-                <span class="learn-more">
-                    <a class="pretty-text" asp-controller="Course" asp-action="Course" asp-route-model="@item">
-                        <strong class="href">Learn more</strong>
-                    </a>
+                <span class="learn-more pretty-text">
+                    @Html.ActionLink("Learn more", "Course", "Course", item)
                 </span>
             </div>
             <hr />

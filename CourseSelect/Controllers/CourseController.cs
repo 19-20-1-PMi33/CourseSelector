@@ -8,15 +8,19 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 
 namespace CourseSelect.Controllers
-{   
+{
     [Authorize]
     public class CourseController : Controller
     {
         private readonly IDBBCService _dBBCService;
+        private readonly IUsersService _usersService;
 
-        public CourseController(IDBBCService dBBCService)
+        public CourseController(
+            IDBBCService dBBCService,
+            IUsersService usersService)
         {
             _dBBCService = dBBCService;
+            _usersService = usersService;
         }
 
         public IActionResult CourseList()
@@ -25,8 +29,13 @@ namespace CourseSelect.Controllers
             return View(dbbcs);
         }
 
+
         public IActionResult Course(Dbbc model)
         {
+            var teacher = _usersService.GetUserById(model.TeacherId);
+
+            model.Teacher = teacher;
+
             return View(model);
         }
     }
