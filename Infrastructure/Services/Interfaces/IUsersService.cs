@@ -11,6 +11,7 @@ namespace Infrastructure.Services.Interfaces
         public IEnumerable<AspNetUsers> GetUsers();
         public IEnumerable<AspNetUsers> GetUserByCredit(string credit);
         public bool AddUser(AspNetUsers user);
+        public AspNetUsers GetUserById(string id);
         public Task<bool> Save();
     }
 }
