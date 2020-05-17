@@ -63,7 +63,7 @@ namespace CourseSelect.Controllers
                 new Dbbc()
                 {
                     TeacherId = teacher.Id,
-                    Description = "Psihology: This is beatiful thing",
+                    Description = "Psihology: The science of behavior and mind. Psychology includes the study of conscious and unconscious phenomena, as well as feeling and thought. It is an academic discipline of immense scope. Psychologists seek an understanding of the emergent properties of brains, and all the variety of phenomena linked to those emergent properties, joining this way the broader neuro-scientific group of researchers. As a social science it aims to understand individuals and groups by establishing general principles and researching specific cases.",
                     StartDate = new DateTime(2020, 1, 1),
                     EndDate = new DateTime(2030, 1, 1),
                     NumberOfSeats = 20,
@@ -72,7 +72,7 @@ namespace CourseSelect.Controllers
                 new Dbbc()
                 {
                     TeacherId = teacher.Id,
-                    Description = "Awakening: Abstergo is bad organisation",
+                    Description = "Yoga: The practice of yoga has been thought to date back to pre-vedic Indian traditions; possibly in the Indus valley civilization around 3000 BCE. Yoga is mentioned in the Rigveda, and also referenced in the Upanishads, . Although, yoga most likely developed as a systematic study around the 5th and 6th centuries BCE, in ancient India's ascetic and śramaṇa movements. The chronology of earliest texts describing yoga-practices is unclear, varyingly credited to the Upanishads. The Yoga Sutras of Patanjali date from the 2nd century BCE, and gained prominence in the west in the 20th century after being first introduced by Swami Vivekananda. Hatha yoga texts began to emerge sometime between the 9th and 11th century with origins in tantra.",
                     StartDate = new DateTime(2020, 1, 1),
                     EndDate = new DateTime(2030, 1, 1),
                     NumberOfSeats = 30,
