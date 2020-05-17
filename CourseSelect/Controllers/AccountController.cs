@@ -62,6 +62,7 @@ namespace CourseSelect.Controllers
             }
             return View(model);
         }
+
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -88,7 +89,7 @@ namespace CourseSelect.Controllers
                 }
 
             }
-            return View(model);
+            return Redirect("~/Identity/Account/Login");
         }
     }
 }
