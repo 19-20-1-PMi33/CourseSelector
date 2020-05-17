@@ -131,8 +131,8 @@ body {
     margin-bottom: 5px
 }
 
-a {
-    color: #05a059 !important;
+.href {
+    color: #05a059;
 }
 
 .seats-and-learn-more-div{
