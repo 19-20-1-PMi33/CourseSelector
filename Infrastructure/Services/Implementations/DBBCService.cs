@@ -37,6 +37,13 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public Dbbc GetById(int id)
+        {
+            var dbbc = _context.Dbbc.FirstOrDefault(x => x.Id == id);
+
+            return dbbc;
+        }
+
         public bool IncrementById(int id)
         {
             try
