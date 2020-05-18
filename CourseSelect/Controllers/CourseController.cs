@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -14,13 +15,16 @@ namespace CourseSelect.Controllers
     {
         private readonly IDBBCService _dBBCService;
         private readonly IUsersService _usersService;
+        private readonly IDBBCToUserService _dBBCToUserService;
 
         public CourseController(
             IDBBCService dBBCService,
-            IUsersService usersService)
+            IUsersService usersService,
+            IDBBCToUserService dBBCToUserService)
         {
             _dBBCService = dBBCService;
             _usersService = usersService;
+            _dBBCToUserService = dBBCToUserService;
         }
 
         public IActionResult CourseList()
@@ -37,6 +41,13 @@ namespace CourseSelect.Controllers
             model.Teacher = teacher;
 
             return View(model);
+        }
+
+        public IActionResult MyCourses()
+        {
+            var dbbcs = _dBBCToUserService.GetUsersDbbcByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return View(dbbcs);
         }
     }
 }
