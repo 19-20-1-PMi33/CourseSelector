@@ -45,7 +45,14 @@ namespace CourseSelect.Controllers
 
         public IActionResult MyCourses()
         {
-            var dbbcs = _dBBCToUserService.GetUsersDbbcByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var dbbcsToUser = _dBBCToUserService.GetUsersDbbcByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var dbbcs = new List<Dbbctouser>();
+
+            foreach (var item in dbbcsToUser)
+            {
+                dbbcs.Add(_dBBCService.)
+            }
 
             return View(dbbcs);
         }
