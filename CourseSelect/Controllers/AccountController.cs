@@ -76,7 +76,7 @@ namespace CourseSelect.Controllers
                     if (result == PasswordVerificationResult.Success || result == PasswordVerificationResult.SuccessRehashNeeded)
                     {
                         await _signInManager.SignInAsync(users.ToList()[0], false);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("CourseList", "Course");
                     }
                     else
                     {
