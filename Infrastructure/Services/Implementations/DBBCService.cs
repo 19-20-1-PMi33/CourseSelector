@@ -37,6 +37,27 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public bool IncrementById(int id)
+        {
+            try
+            {
+                var dbbc = _context.Dbbc.FirstOrDefault(x => x.Id == id);
+
+                if (dbbc.NumberOfSeats == dbbc.NumberSetsUsed)
+                {
+                    return false;
+                }
+
+                dbbc.NumberSetsUsed++;
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> Save()
         {
             try
