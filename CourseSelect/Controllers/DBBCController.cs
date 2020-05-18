@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CourseSelect.Controllers
 {
+    [Authorize]
     public class DBBCController : Controller
     {
         private readonly IDBBCToUserService _dBBCToUserService;
@@ -27,6 +29,8 @@ namespace CourseSelect.Controllers
                 Dbbcid = dbbcId,
                 UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
             };
+
+            var dbbcsToUser = _dBBCToUserService.GetUsersDbbcByUserId(dbbctouser.UserId);
 
             var result = _dBBCService.IncrementById(dbbcId);
 
