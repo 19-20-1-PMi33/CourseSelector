@@ -19,7 +19,7 @@ namespace CourseSelect.Controllers
             _dBBCService = dBBCService;
         }
 
-        public void Subscribe(int dbbcId)
+        public IActionResult Subscribe(int dbbcId)
         {
             Dbbctouser dbbctouser = new Dbbctouser()
             {
@@ -36,6 +36,8 @@ namespace CourseSelect.Controllers
                 _dBBCToUserService.AddDBBCToUser(dbbctouser);
                 _dBBCToUserService.Save();
             }
+
+            return RedirectToAction("CourseList", "Course");
         }
     }
 }
