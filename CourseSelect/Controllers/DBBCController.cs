@@ -19,7 +19,7 @@ namespace CourseSelect.Controllers
             _dBBCService = dBBCService;
         }
 
-        public IActionResult Subscribe(int dbbcId)
+        public void Subscribe(int dbbcId)
         {
             Dbbctouser dbbctouser = new Dbbctouser()
             {
@@ -27,10 +27,15 @@ namespace CourseSelect.Controllers
                 UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
             };
 
-            _dBBCToUserService.AddDBBCToUser(dbbctouser);
-            _dBBCToUserService.Save();
+            var result = _dBBCService.IncrementById(dbbcId);
 
-            return View();
+            if (result)
+            {
+                _dBBCService.Save();
+
+                _dBBCToUserService.AddDBBCToUser(dbbctouser);
+                _dBBCToUserService.Save();
+            }
         }
     }
 }
