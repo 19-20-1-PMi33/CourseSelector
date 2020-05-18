@@ -47,9 +47,11 @@
                 </div>
                 <br />
                 <div class="button-align-right">
-                    <button class="btn btn-success" onclick="onSubscribe()" asp-controller="DBBC" asp-action="Subscribe" asp-route-dbbcId="@Model.Id">
-                        Subscribe
-                    </button>
+                    <form asp-controller="DBBC" asp-action="Subscribe" asp-route-dbbcId="@Model.Id">
+                        <button class="btn btn-success" onclick="onSubscribe()">
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
