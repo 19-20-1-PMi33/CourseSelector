@@ -31,7 +31,7 @@ namespace Infrastructure.Services.Implementations
                 _context.Dbbc.Add(dbbc);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -59,7 +59,7 @@ namespace Infrastructure.Services.Implementations
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -72,7 +72,7 @@ namespace Infrastructure.Services.Implementations
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
