@@ -9,13 +9,14 @@ namespace CourseSelect.Controllers
     public class DBBCController : Controller
     {
         private readonly IDBBCToUserService _dBBCToUserService;
-        private readonly 
+        private readonly IDBBCService _dBBCService;
 
         public DBBCController(
             IDBBCToUserService dBBCToUserService,
             IDBBCService dBBCService)
         {
             _dBBCToUserService = dBBCToUserService;
+            _dBBCService = dBBCService;
         }
 
         public IActionResult Subscribe(int dbbcId)
