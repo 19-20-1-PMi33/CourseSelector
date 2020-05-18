@@ -91,6 +91,9 @@ namespace CourseSelect
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Course}/{action=CourseList}");
+                endpoints.MapControllerRoute(
+                    name: "login",
+                    pattern: "Identity/{controller=Account}/{action=Login}");
                 endpoints.MapRazorPages();
             });
 
