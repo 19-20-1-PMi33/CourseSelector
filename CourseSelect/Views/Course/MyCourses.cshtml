@@ -12,23 +12,29 @@
     string name = splited[0];
     string description = splited[1];
 
-    <div class="card description-card">
-        <div>
-            <h3>@(name)</h3>
-            <br />
-            <br />
-            <div class="pretty-text number-of-seats">
-                Number of seats: @Html.DisplayFor(modelItem => item.NumberOfSeats)
-            </div>
-            <hr />
-            <div class="pretty-text description-text">
-                @description
-            </div>
+<div class="card description-card">
+    <img alt="strong"
+         src="~/images/strong.jpg"
+         class="strong-image" 
+    />
+    <div class="description">
+        <h2>@(name)</h2>
+        <br />
+        <br />
+        <div class="pretty-text number-of-seats">
+            Number of seats: @Html.DisplayFor(modelItem => item.NumberOfSeats)
         </div>
-        <img 
-            alt="teach"
-            src="~/images/teach.svg"
-        />
+        <hr />
+        <div class="pretty-text description-text">
+            @description
+        </div>
     </div>
+    <span class="learn-more pretty-text">
+        @Html.ActionLink("Learn more", "Course", "Course", item, new { @class = "href" })
+    </span>
+    <img alt="teach"
+         src="~/images/teach.svg"
+         class="teach-image" />
+</div>
     <hr />
 }

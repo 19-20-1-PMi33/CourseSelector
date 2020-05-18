@@ -451,3 +451,14 @@ body {
 button-align-right{
     margin-right: 0px;
 }
+
+.teach-image {
+    height: 250px;
+}
+
+.strong-image {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
