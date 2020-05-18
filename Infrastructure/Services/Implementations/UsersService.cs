@@ -38,7 +38,7 @@ namespace Infrastructure.Services.Implementations
                 _context.AspNetUsers.Add(user);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
