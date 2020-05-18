@@ -37,7 +37,7 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
-        public Dbbc GetById(int id)
+        public Dbbc GetById(int? id)
         {
             var dbbc = _context.Dbbc.FirstOrDefault(x => x.Id == id);
 
