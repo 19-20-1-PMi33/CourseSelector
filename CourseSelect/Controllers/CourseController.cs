@@ -47,11 +47,11 @@ namespace CourseSelect.Controllers
         {
             var dbbcsToUser = _dBBCToUserService.GetUsersDbbcByUserId(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            var dbbcs = new List<Dbbctouser>();
+            var dbbcs = new List<Dbbc>();
 
             foreach (var item in dbbcsToUser)
             {
-                dbbcs.Add(_dBBCService.)
+                dbbcs.Add(_dBBCService.GetById(item.Dbbcid));
             }
 
             return View(dbbcs);
