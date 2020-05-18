@@ -5,6 +5,7 @@ using Model;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace CourseSelect.Controllers
 {
@@ -32,14 +33,20 @@ namespace CourseSelect.Controllers
 
             var dbbcsToUser = _dBBCToUserService.GetUsersDbbcByUserId(dbbctouser.UserId);
 
-            var result = _dBBCService.IncrementById(dbbcId);
+            var current = dbbcsToUser.FirstOrDefault(x => x.Dbbcid == dbbctouser.Dbbcid);
 
-            if (result)
+            if (current == null)
             {
-                await _dBBCService.Save();
 
-                _dBBCToUserService.AddDBBCToUser(dbbctouser);
-                await _dBBCToUserService.Save();
+                var result = _dBBCService.IncrementById(dbbcId);
+
+                if (result)
+                {
+                    await _dBBCService.Save();
+
+                    _dBBCToUserService.AddDBBCToUser(dbbctouser);
+                    await _dBBCToUserService.Save();
+                }
             }
 
             return RedirectToAction("CourseList", "Course");
