@@ -3,6 +3,7 @@ using Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace CourseSelect.Controllers
 {
@@ -19,7 +20,7 @@ namespace CourseSelect.Controllers
             _dBBCService = dBBCService;
         }
 
-        public IActionResult Subscribe(int dbbcId)
+        public async Task<IActionResult> Subscribe(int dbbcId)
         {
             Dbbctouser dbbctouser = new Dbbctouser()
             {
@@ -31,10 +32,10 @@ namespace CourseSelect.Controllers
 
             if (result)
             {
-                _dBBCService.Save();
+                await _dBBCService.Save();
 
                 _dBBCToUserService.AddDBBCToUser(dbbctouser);
-                _dBBCToUserService.Save();
+                await _dBBCToUserService.Save();
             }
 
             return RedirectToAction("CourseList", "Course");
