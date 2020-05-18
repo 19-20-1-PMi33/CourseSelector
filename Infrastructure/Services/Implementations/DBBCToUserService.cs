@@ -38,7 +38,7 @@ namespace Infrastructure.Services.Implementations
                 _context.Dbbctouser.Add(dbbcToUser);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
