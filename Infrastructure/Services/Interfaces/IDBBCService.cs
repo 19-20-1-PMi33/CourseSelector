@@ -10,6 +10,7 @@ namespace Infrastructure.Services.Interfaces
     {
         public IEnumerable<Dbbc> GetDBBC();
         public bool AddDBBC(Dbbc dbbc);
+        public bool IncrementById(int id);
         public Task<bool> Save();
     }
 }
