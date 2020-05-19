@@ -37,7 +37,7 @@ namespace CourseSelect.Controllers
                     Credit = "Student",
                     Surname = "Wilson",
                     PasswordHash = "AQAAAAEAACcQAAAAEDPwXXx3p9qMfLYoDG5yhJQ3/CEjPCgp5dxH3BoLi6Oa7FdcoNRrjnD1CnFmnsgV9A=="
-                },
+                },                  
                 new AspNetUsers()
                 {
                     UserName = "Altapak",
