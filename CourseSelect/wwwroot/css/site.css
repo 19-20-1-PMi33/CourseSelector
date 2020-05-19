@@ -357,12 +357,12 @@ body {
     border: white;
     border-radius: 10px;
     display: block;
-    margin-top: -125px
+    margin-top: -140px
 }
 
 .course-beautiful-column {
     background: linear-gradient(to right, #09cc4a 21%, #4fde4f 82%);
-    height: 125px;
+    height: 140px;
     width: 15px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
