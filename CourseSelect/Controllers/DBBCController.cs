@@ -51,5 +51,24 @@ namespace CourseSelect.Controllers
 
             return RedirectToAction("CourseList", "Course");
         }
+        
+        public async Task<IActionResult> AddDbbc(DvvsModel model)
+        {
+            Dbbc dbbc = new Dbbc()
+            {
+                TeacherId = model.TeacherId,
+                Description = model.Description,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+                NumberOfSeats = model.NumberOfSeats,
+                NumberSetsUsed = 0
+            };
+
+            _dBBCService.AddDBBC(dbbc);
+
+            await _dBBCService.Save();
+
+            return RedirectToAction("CourseList", "Course");
+        }
     }
 }
