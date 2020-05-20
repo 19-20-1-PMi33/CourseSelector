@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using CourseSelect.Models;
 using Microsoft.AspNetCore.Authorization;
 using Infrastructure.Services.Interfaces;
+using System.Security.Claims;
+using Infrastructure.Services.Implementations;
 
 namespace CourseSelect.Controllers
 {
@@ -31,10 +33,17 @@ namespace CourseSelect.Controllers
         }
         public IActionResult DvvsModify()
         {
-            var model = new DvvsModel();
-            var users = _usersService.GetUsers();
-            model.Teachers = users;
-            return View(model);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _usersService.GetUserById(userId);
+            if(user.IsAdmin==true)
+            {
+                var model = new DvvsModel();
+                var users = _usersService.GetUsers();
+                model.Teachers = users;
+                return View(model);
+            }
+            return RedirectToAction("CourseList","Course");
+            
         }
     }
 
