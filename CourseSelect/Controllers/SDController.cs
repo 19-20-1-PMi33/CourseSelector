@@ -44,7 +44,8 @@ namespace CourseSelect.Controllers
                     Email = "654321@gmail.com",
                     Credit = "Teacher",
                     Surname = "Wilson",
-                    PasswordHash = "AQAAAAEAACcQAAAAEDPwXXx3p9qMfLYoDG5yhJQ3/CEjPCgp5dxH3BoLi6Oa7FdcoNRrjnD1CnFmnsgV9A=="
+                    PasswordHash = "AQAAAAEAACcQAAAAEDPwXXx3p9qMfLYoDG5yhJQ3/CEjPCgp5dxH3BoLi6Oa7FdcoNRrjnD1CnFmnsgV9A==",
+                    IsAdmin = true
                 },
                 new AspNetUsers()
                 {
@@ -52,7 +53,8 @@ namespace CourseSelect.Controllers
                     Email = "65456@gmail.com",
                     Credit = "Teacher1",
                     Surname = "Imgur",
-                    PasswordHash = "AQAAAAEAACcQAAAAEDPwXXx3p9qMfLYoDG5yhJQ3/CEjPCgp5dxH3BoLi6Oa7FdcoNRrjnD1CnFmnsgV9A=="
+                    PasswordHash = "AQAAAAEAACcQAAAAEDPwXXx3p9qMfLYoDG5yhJQ3/CEjPCgp5dxH3BoLi6Oa7FdcoNRrjnD1CnFmnsgV9A==",
+                    IsAdmin = true
                 },
             };
 
