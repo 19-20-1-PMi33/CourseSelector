@@ -50,6 +50,11 @@
                             Subscribe
                         </button>
                     </form>
+                    <form asp-controller="DBBC" asp-action="Unsubscribe" asp-route-dbbcId="@Model.Dbbc.Id">
+                        <button class="btn btn-success">
+                            Unsubscribe
+                        </button>
+                    </form>
                 </div>
                 <br />
                 <ul>

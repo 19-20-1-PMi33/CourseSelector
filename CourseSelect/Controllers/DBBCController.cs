@@ -52,7 +52,36 @@ namespace CourseSelect.Controllers
 
             return RedirectToAction("CourseList", "Course");
         }
-        
+
+        public async Task<IActionResult> Unsubscribe(int dbbcId)
+        {
+            Dbbctouser dbbctouser = new Dbbctouser()
+            {
+                Dbbcid = dbbcId,
+                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            var dbbcsToUser = _dBBCToUserService.GetUsersDbbcByUserId(dbbctouser.UserId);
+
+            var current = dbbcsToUser.FirstOrDefault(x => x.Dbbcid == dbbctouser.Dbbcid);
+
+            if (current != null)
+            {
+
+                var result = _dBBCService.DecrementById(dbbcId);
+
+                if (result)
+                {
+                    await _dBBCService.Save();
+
+                    _dBBCToUserService.RemoveDBBCToUser(dbbctouser);
+                    await _dBBCToUserService.Save();
+                }
+            }
+
+            return RedirectToAction("CourseList", "Course");
+        }
+
         public async Task<IActionResult> AddDbbc(DvvsModel model)
         {
             Dbbc dbbc = new Dbbc()

@@ -12,6 +12,7 @@ namespace Infrastructure.Services.Interfaces
         public bool AddDBBC(Dbbc dbbc);
         public Dbbc GetById(int? id);
         public bool IncrementById(int id);
+        public bool DecrementById(int id);
         public Task<bool> Save();
     }
 }

@@ -52,6 +52,20 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public bool RemoveDBBCToUser(Dbbctouser dbbcToUser)
+        {
+            try
+            {
+                var currentDbbctouser = _context.Dbbctouser.First(x => x.UserId == dbbcToUser.UserId && x.Dbbcid == dbbcToUser.Dbbcid);
+                _context.Dbbctouser.Remove(currentDbbctouser);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> Save()
         {
             try

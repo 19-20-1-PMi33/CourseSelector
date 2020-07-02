@@ -65,6 +65,27 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public bool DecrementById(int id)
+        {
+            try
+            {
+                var dbbc = _context.Dbbc.FirstOrDefault(x => x.Id == id);
+
+                if (dbbc.NumberOfSeats == 0)
+                {
+                    return false;
+                }
+
+                dbbc.NumberSetsUsed--;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> Save()
         {
             try
