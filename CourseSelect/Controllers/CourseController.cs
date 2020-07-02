@@ -43,6 +43,7 @@ namespace CourseSelect.Controllers
 
             var courseModel = new CourseModel();
             courseModel.Dbbc = model;
+            courseModel.Dbbctouser = _dBBCToUserService.GetDBBCtoUserByIds(User.FindFirstValue(ClaimTypes.NameIdentifier), model.Id);
 
             var users = new List<AspNetUsers>();
 

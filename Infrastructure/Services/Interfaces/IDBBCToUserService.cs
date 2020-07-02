@@ -13,6 +13,8 @@ namespace Infrastructure.Services.Interfaces
         public bool AddDBBCToUser(Dbbctouser dbbcToUser);
         public IEnumerable<Dbbctouser> GetDbbcToUserByDbbcId(int? dbbcId);
         public bool RemoveDBBCToUser(Dbbctouser dbbcToUser);
+        public bool AddNotate(int? DBBCId, string UserId, string Notate);
+        public Dbbctouser GetDBBCtoUserByIds(string UserId, int? DBBCId);
         public Task<bool> Save();
     }
 }

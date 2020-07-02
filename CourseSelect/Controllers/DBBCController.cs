@@ -100,5 +100,12 @@ namespace CourseSelect.Controllers
 
             return RedirectToAction("CourseList", "Course");
         }
+
+        public async Task<IActionResult> AddNotate(int? Dbbcid, string UserId, string Notate)
+        {
+            _dBBCToUserService.AddNotate(Dbbcid, UserId, Notate);
+            await _dBBCToUserService.Save();
+            return RedirectToAction("CourseList", "Course");
+        }
     }
 }

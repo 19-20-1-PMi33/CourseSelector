@@ -9,6 +9,7 @@ namespace CourseSelect.Models
     public class CourseModel
     {
         public Dbbc Dbbc { get; set; }
+        public Dbbctouser Dbbctouser { get; set; }
         public List<AspNetUsers> Users { get; set; }
     }
 }

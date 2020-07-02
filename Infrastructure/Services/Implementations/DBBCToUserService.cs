@@ -31,14 +31,6 @@ namespace Infrastructure.Services.Implementations
             return allDbbc;
         }
 
-        public IEnumerable<Dbbctouser> GetDbbcToUserByDbbcId(int? dbbcId)
-        {
-            var allDbbc = _context.Dbbctouser.AsEnumerable().Where(dbbcToUser =>
-                                                                   dbbcToUser.Dbbcid == dbbcId);
-
-            return allDbbc;
-        }
-
         public bool AddDBBCToUser(Dbbctouser dbbcToUser)
         {
             try
@@ -52,6 +44,14 @@ namespace Infrastructure.Services.Implementations
             }
         }
 
+        public IEnumerable<Dbbctouser> GetDbbcToUserByDbbcId(int? dbbcId)
+        {
+            var allDbbc = _context.Dbbctouser.AsEnumerable().Where(dbbcToUser =>
+                                                                   dbbcToUser.Dbbcid == dbbcId);
+
+            return allDbbc;
+        }
+
         public bool RemoveDBBCToUser(Dbbctouser dbbcToUser)
         {
             try
@@ -61,6 +61,37 @@ namespace Infrastructure.Services.Implementations
                 return true;
             }
             catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public Dbbctouser GetDBBCtoUserByIds(string UserId, int? DBBCId)
+        {
+            try
+            {
+                var dBBCtoUser = _context.Dbbctouser.First(x => x.Dbbcid == DBBCId && x.UserId == UserId);
+                return dBBCtoUser;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool AddNotate(int? DBBCId, string UserId, string Notate)
+        {
+            try
+            {
+                var dBBCtoUser = _context.Dbbctouser.First(x => x.Dbbcid == DBBCId && x.UserId == UserId);
+
+                if (dBBCtoUser == null)
+                    return false;
+
+                dBBCtoUser.Notate = Notate;
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }

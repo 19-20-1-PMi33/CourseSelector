@@ -43,6 +43,17 @@
                 <div class="pretty-text description-text">
                     @description
                 </div>
+                @if (Model.Dbbctouser != null)
+                {
+                    @Html.TextAreaFor(m => m.Dbbctouser.Notate, new { @class = "form-control" })
+                    <div class="button-align-right">
+                        <form asp-controller="DBBC" asp-action="AddNotate" asp-route-Dbbcid="@Model.Dbbctouser.Dbbcid" asp-route-UserId="@Model.Dbbctouser.UserId" asp-route-Notate="@Model.Dbbctouser.Notate" id="addNotate">
+                            <button class="btn btn-success">
+                                Add Notate
+                            </button>
+                        </form>
+                    </div>
+                }
                 <br />
                 <div class="button-align-right">
                     <form asp-controller="DBBC" asp-action="Subscribe" asp-route-dbbcId="@Model.Dbbc.Id">
@@ -67,3 +78,24 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    // Attach a submit handler to the form
+    $("#addNotate").submit(function (event) {
+
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var $form = $(this),
+            notate = $("#Dbbctouser_Notate").val(),
+            url = $form.attr("action");
+        var j = url.split("Notate=")
+        var newurl = j[0] + "&notate=" + notate
+        console.log(url)
+        console.log(newurl)
+        // Send the data using post
+        var posting = $.post(newurl)
+    });
+</script>

@@ -15,7 +15,7 @@ namespace Infrastructure
         public CoursesContext(DbContextOptions<CoursesContext> options)
             : base(options)
         {
-            
+
         }
 
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
@@ -34,7 +34,7 @@ namespace Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-           
+
             modelBuilder.Entity<AspNetRoles>(entity =>
             {
                 entity.HasIndex(e => e.NormalizedName)
@@ -98,7 +98,7 @@ namespace Infrastructure
                 entity.ToTable("DBBCTOUSER");
 
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
+                entity.Property(e => e.Notate).HasDefaultValue("");
                 entity.Property(e => e.Dbbcid).HasColumnName("DBBCId");
 
                 entity.Property(e => e.UserId)
