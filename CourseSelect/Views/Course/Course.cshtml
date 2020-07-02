@@ -1,11 +1,11 @@
-﻿@model Model.Dbbc
+﻿@model CourseSelect.Models.CourseModel
 @{
     ViewData["Title"] = "Course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ 
-    var splits = @Model.Description.Split(':');
+@{
+    var splits = @Model.Dbbc.Description.Split(':');
     var name = splits[0];
     var description = splits[1];
 }
@@ -16,30 +16,28 @@
     <div class="pretty-card">
         <div class="pretty-column"></div>
         <div class="pretty-card-text">
-            <img 
-                 alt="ToSalute"
+            <img alt="ToSalute"
                  src="~/images/ToSalute.jpg"
-                 class="course-image"
-            />
+                 class="course-image" />
             <div class="course-description">
                 <div class="pretty-text teacher">
-                    @Model.Teacher.UserName @Model.Teacher.Surname
+                    @Model.Dbbc.Teacher.UserName @Model.Dbbc.Teacher.Surname
                 </div>
                 <span class="pretty-text start-date">
-                    <strong>Start date</strong>: @Model.StartDate.GetDateTimeFormats()[0]
+                    <strong>Start date</strong>: @Model.Dbbc.StartDate.GetDateTimeFormats()[0]
                 </span>
                 <span class="pretty-text end-date">
-                    <strong>End date</strong>: @Model.EndDate.GetValueOrDefault().GetDateTimeFormats()[0]
+                    <strong>End date</strong>: @Model.Dbbc.EndDate.GetValueOrDefault().GetDateTimeFormats()[0]
                 </span>
                 <br />
                 <br />
                 <br />
                 <br />
                 <div class="pretty-text number-of-seats">
-                    Number of seats: @Model.NumberOfSeats
+                    Number of seats: @Model.Dbbc.NumberOfSeats
                 </div>
                 <span class="pretty-text number-of-used-seats">
-                    Number of used seats: @Model.NumberSetsUsed
+                    Number of used seats: @Model.Dbbc.NumberSetsUsed
                 </span>
                 <hr />
                 <div class="pretty-text description-text">
@@ -47,12 +45,19 @@
                 </div>
                 <br />
                 <div class="button-align-right">
-                    <form asp-controller="DBBC" asp-action="Subscribe" asp-route-dbbcId="@Model.Id">
+                    <form asp-controller="DBBC" asp-action="Subscribe" asp-route-dbbcId="@Model.Dbbc.Id">
                         <button class="btn btn-success" onclick="onSubscribe()">
                             Subscribe
                         </button>
                     </form>
                 </div>
+                <br />
+                <ul>
+                    @foreach (var item in Model.Users)
+                    {
+                        <li>@item.UserName @item.Surname</li>
+                    }
+                </ul>
             </div>
         </div>
     </div>

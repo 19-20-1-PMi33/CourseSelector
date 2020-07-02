@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using CourseSelect.Models;
 using Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +41,20 @@ namespace CourseSelect.Controllers
 
             model.Teacher = teacher;
 
-            return View(model);
+            var courseModel = new CourseModel();
+            courseModel.Dbbc = model;
+
+            var users = new List<AspNetUsers>();
+
+            var allDbbsToUsers = _dBBCToUserService.GetDbbcToUserByDbbcId(model.Id);
+            foreach (var item in allDbbsToUsers)
+            {
+                users.Add(_usersService.GetUserById(item.UserId));
+            }
+
+            courseModel.Users = users;
+
+            return View(courseModel);
         }
 
         public IActionResult MyCourses()

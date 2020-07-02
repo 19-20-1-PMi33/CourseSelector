@@ -31,6 +31,14 @@ namespace Infrastructure.Services.Implementations
             return allDbbc;
         }
 
+        public IEnumerable<Dbbctouser> GetDbbcToUserByDbbcId(int? dbbcId)
+        {
+            var allDbbc = _context.Dbbctouser.AsEnumerable().Where(dbbcToUser =>
+                                                                   dbbcToUser.Dbbcid == dbbcId);
+
+            return allDbbc;
+        }
+
         public bool AddDBBCToUser(Dbbctouser dbbcToUser)
         {
             try
